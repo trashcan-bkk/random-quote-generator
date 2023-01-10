@@ -51,11 +51,12 @@ namespace random_quote_generator.Controllers
                 var result = await client.GetAsync("https://type.fit/api/quotes");
                 var quoteListString = await result.Content.ReadAsStringAsync();
                 var quoteList = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Quote>>(quoteListString);
-                return quoteList.ElementAt(id);  
+                var quote = quoteList.ElementAt(id);
+                return quote;
             }
         }
 
-        [HttpGet("/rq-generator/quote/list")]
+        [HttpGet("/rq-generator/quote-list")]
         public async Task<IEnumerable<Quote>> GetQuotesList()
         {
            using (HttpClient client = new HttpClient()){
@@ -66,7 +67,57 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote/list/{quantity}")]
+        [HttpGet("/rq-generator/quote-list/ordered-by-text-asc")]
+        public async Task<IEnumerable<Quote>> GetQuotesListOrderByTextAsc()
+        {
+           using (HttpClient client = new HttpClient()){
+                var result = await client.GetAsync("https://type.fit/api/quotes");
+                var quoteListString = await result.Content.ReadAsStringAsync();
+                var quoteList = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Quote>>(quoteListString);
+                return quoteList.OrderBy(q => q.Text);
+            }
+        }
+
+        [HttpGet("/rq-generator/quote-list/ordered-by-text-desc")]
+        public async Task<IEnumerable<Quote>> GetQuotesListOrderByTextDesc()
+        {
+           using (HttpClient client = new HttpClient()){
+                var result = await client.GetAsync("https://type.fit/api/quotes");
+                var quoteListString = await result.Content.ReadAsStringAsync();
+                var quoteList = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Quote>>(quoteListString);
+                return quoteList.OrderByDescending(q => q.Text);
+            }
+        }
+
+        [HttpGet("/rq-generator/quote-list/ordered-by-author-asc")]
+        public async Task<IEnumerable<Quote>> GetQuotesListOrderByAuthorAsc()
+        {
+           using (HttpClient client = new HttpClient()){
+                var result = await client.GetAsync("https://type.fit/api/quotes");
+                var quoteListString = await result.Content.ReadAsStringAsync();
+                var quoteList = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Quote>>(quoteListString);
+                return quoteList.OrderBy(a => a.Author);
+
+                //In case want to remove where author = null
+                //return quoteList.OrderBy(a => a.Author).Where(a => a.Author != null);
+            }
+        }
+
+        [HttpGet("/rq-generator/quote-list/ordered-by-author-desc")]
+        public async Task<IEnumerable<Quote>> GetQuotesListOrderByAuthorDesc()
+        {
+           using (HttpClient client = new HttpClient()){
+                var result = await client.GetAsync("https://type.fit/api/quotes");
+                var quoteListString = await result.Content.ReadAsStringAsync();
+                var quoteList = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Quote>>(quoteListString);
+                return quoteList.OrderByDescending(a => a.Author);
+
+                //In case want to remove where author = null
+                //return quoteList.OrderByDescending(a => a.Author).Where(a => a.Author != null);
+            }
+        }
+
+        [HttpGet("/rq-generator/quote-list/{quantity}")]
         public async Task<IEnumerable<Quote>>  GetQuotesListBySpecificQuantity(int quantity)
         {
            using (HttpClient client = new HttpClient()){
