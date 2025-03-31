@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\random-quote-generator.props" />
+</Project>

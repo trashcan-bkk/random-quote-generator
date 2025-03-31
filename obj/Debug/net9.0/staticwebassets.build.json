@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Q6tTSM5Rk9hl1WkaafkrqjlKQz1zZsLaKy843sDwaAM=",
+  "Source": "random-quote-generator",
+  "BasePath": "_content/random-quote-generator",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

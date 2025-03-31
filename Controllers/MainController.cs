@@ -9,7 +9,7 @@ namespace random_quote_generator.Controllers
 {
     public class MainController
     {
-        [HttpGet("/rq-generator/quote/random")]
+        [HttpGet("/trashcan/random-quote-generator/quote/random")]
         public async Task<ActionResult<Quote>> GetOneRandomQuote()
         {
             using(HttpClient client = new HttpClient())
@@ -27,7 +27,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote/random/{quantity}")]
+        [HttpGet("/trashcan/random-quote-generator/quote/random/{quantity}")]
         public async Task<IEnumerable<Quote>> GetRandomQuotesByQuantity(int quantity)
         {
             using(HttpClient client = new HttpClient())
@@ -44,7 +44,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote/{id}")]
+        [HttpGet("/trashcan/random-quote-generator/quote/{id}")]
         public async Task<ActionResult<Quote>> GetQuoteById(int id)
         {
             using (HttpClient client = new HttpClient()){
@@ -56,7 +56,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list")]
         public async Task<IEnumerable<Quote>> GetQuotesList()
         {
            using (HttpClient client = new HttpClient()){
@@ -67,7 +67,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list/ordered-by-text-asc")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list/ordered-by-text-asc")]
         public async Task<IEnumerable<Quote>> GetQuotesListOrderByTextAsc()
         {
            using (HttpClient client = new HttpClient()){
@@ -78,7 +78,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list/ordered-by-text-desc")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list/ordered-by-text-desc")]
         public async Task<IEnumerable<Quote>> GetQuotesListOrderByTextDesc()
         {
            using (HttpClient client = new HttpClient()){
@@ -89,7 +89,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list/ordered-by-author-asc")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list/ordered-by-author-asc")]
         public async Task<IEnumerable<Quote>> GetQuotesListOrderByAuthorAsc()
         {
            using (HttpClient client = new HttpClient()){
@@ -103,7 +103,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list/ordered-by-author-desc")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list/ordered-by-author-desc")]
         public async Task<IEnumerable<Quote>> GetQuotesListOrderByAuthorDesc()
         {
            using (HttpClient client = new HttpClient()){
@@ -117,7 +117,7 @@ namespace random_quote_generator.Controllers
             }
         }
 
-        [HttpGet("/rq-generator/quote-list/{quantity}")]
+        [HttpGet("/trashcan/random-quote-generator/quote-list/{quantity}")]
         public async Task<IEnumerable<Quote>>  GetQuotesListBySpecificQuantity(int quantity)
         {
            using (HttpClient client = new HttpClient()){
